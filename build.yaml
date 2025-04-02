@@ -1,5 +1,8 @@
 include:
   - board: macro_key
+    snippet: zmk-usb-logging
+    artifact-name: macro_key_debug
+  - board: macro_key
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: nice_nano_v2

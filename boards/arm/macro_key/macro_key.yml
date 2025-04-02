@@ -1,0 +1,15 @@
+identifier: macro_key
+name: macro_key
+type: keyboard
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - adc
+  - usb_device
+  - ble
+  - ieee802154
+  - pwm
+  - watchdog
+  - kscan

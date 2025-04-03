@@ -1,5 +1,6 @@
 include:
   - board: macro_key
+    shield: nice_view
     snippet: zmk-usb-logging
     artifact-name: macro_key_debug
   - board: macro_key

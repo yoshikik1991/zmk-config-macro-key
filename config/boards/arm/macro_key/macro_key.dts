@@ -111,13 +111,13 @@
 };
 
 
-&spi1 {
-    compatible = "nordic,nrf-spim";
+&nice_view_spi {
+	status = "okay";
     pinctrl-0 = <&spi1_default>;
     pinctrl-1 = <&spi1_sleep>;
     pinctrl-names = "default", "sleep";
+	cs-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
 };
-
 
 &uart0 {
     compatible = "nordic,nrf-uarte";

@@ -1,0 +1,28 @@
+{
+  "name": "ZMK Development",
+  "dockerFile": "Dockerfile",
+  "runArgs": ["--security-opt", "label=disable"],
+  "containerEnv": {
+    //"WORKSPACE_DIR": "${containerWorkspaceFolder}",
+    "WORKSPACE_DIR": "/workspaces",
+    "PROMPT_COMMAND": "history -a"
+  },
+  "workspaceFolder": "/workspaces/zmk-config", 
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/zmk-config,type=bind",
+  "postCreateCommand": "sh /workspaces/zmk-config/.devcontainer/init.sh",
+  "mounts": [
+    //"type=volume,source=zmk-root-user,target=/root",
+    //"type=volume,source=zmk,target=/workspaces/zmk"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+          "ms-vscode.cpptools",
+          "ms-python.python"],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "forwardPorts": [3000]
+}

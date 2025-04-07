@@ -76,12 +76,6 @@ def main():
     os.chdir(WORKDIR)
     print(os.getcwd())
 
-    #west update
-    mkdir('/workspaces/app/')
-    shutil.copy(ZMK_CONFG_PATH + '/config/west.yml', '/workspaces/app/')
-    run_shell_command('west update')   
-    run_shell_command('west zephyr-export')   
-
     uf2_backup_and_clean(ZMK_CONFG_PATH + '/release')
 
     #build keyboard by build.yaml

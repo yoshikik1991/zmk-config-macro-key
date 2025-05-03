@@ -9,8 +9,7 @@
   },
   "workspaceFolder": "/workspaces/zmk-config", 
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/zmk-config,type=bind",
-  //"postCreateCommand": "sh /workspaces/zmk-config/.devcontainer/init.sh",
-  "postCreateCommand": "python3 /workspaces/zmk-config/.devcontainer/init.py",
+  "postCreateCommand": "sh /workspaces/zmk-config/.devcontainer/init.sh",
   "mounts": [
     //"type=volume,source=zmk-root-user,target=/root",
     //"type=volume,source=zmk,target=/workspaces/zmk"

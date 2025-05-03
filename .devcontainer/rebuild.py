@@ -1,6 +1,5 @@
 import yaml, json, os, shutil, subprocess, glob
 from datetime import datetime, timezone, timedelta
-import argparse
 
 #ENV Variable
 WORKDIR = '/workspaces'
@@ -77,20 +76,12 @@ def main():
     os.chdir(WORKDIR)
     print(os.getcwd())
 
-    #get args
-    parser = argparse.ArgumentParser(description="ZMK Build Script")
-    parser.add_argument("--update", action="store_true", help="enable west update")
-    args = parser.parse_args()
-
     #west update
-    if not os.path.exists('/workspaces/app/') or args.update:
-        mkdir('/workspaces/app/')
-        shutil.copy(ZMK_CONFG_PATH + '/config/west.yml', '/workspaces/app/')
-        if not args.update:
-            run_shell_command('west init -l app/')  
-        run_shell_command('west update')   
-        run_shell_command('west zephyr-export')   
-    
+    mkdir('/workspaces/app/')
+    shutil.copy(ZMK_CONFG_PATH + '/config/west.yml', '/workspaces/app/')
+    run_shell_command('west update')   
+    run_shell_command('west zephyr-export')   
+
     uf2_backup_and_clean(ZMK_CONFG_PATH + '/release')
 
     #build keyboard by build.yaml

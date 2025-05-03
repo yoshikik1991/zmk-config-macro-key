@@ -6,7 +6,6 @@ import argparse
 WORKDIR = '/workspaces'
 ZMK_CONFG_PATH = '/workspaces/zmk-config'
 
-
 def run_shell_command(command):
     process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
     while True:
@@ -40,8 +39,6 @@ def uf2_backup_and_clean(dir):
         if os.path.isfile(p):
             shutil.move(p, backup_dir)
     
-
-
 def zmk_build(board, shield, buildOption, releaseDir, zmkConfigPath=None):
     print(board)
     print(shield)

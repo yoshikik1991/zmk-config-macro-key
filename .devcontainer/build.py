@@ -82,11 +82,15 @@ def main():
     parser.add_argument("--update", action="store_true", help="enable west update")
     args = parser.parse_args()
 
+    #set build mode
+    init = not os.path.exists('/workspaces/app/')
+    update = args.update
+
     #west update
-    if not os.path.exists('/workspaces/app/') or args.update:
+    if init or update:
         mkdir('/workspaces/app/')
         shutil.copy(ZMK_CONFG_PATH + '/config/west.yml', '/workspaces/app/')
-        if not args.update:
+        if init:
             run_shell_command('west init -l app/')  
         run_shell_command('west update')   
         run_shell_command('west zephyr-export')   

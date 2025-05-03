@@ -9,6 +9,8 @@
 #include <nordic/nrf52840_qiaa.dtsi>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
+#include <input/processors.dtsi>
+
 #include "macro_key-pinctrl.dtsi"
 
 / {
@@ -86,6 +88,33 @@
 			RC(4,0) RC(4,1) RC(4,2) RC(4,3) 
         >;
     };
+
+	anin0: analog_input_0 {
+		compatible = "zmk,analog-input";
+		sampling-hz = <1000>;
+
+		x-ch {
+			io-channels = <&adc 0>;
+			mv-mid = <1500>;
+			mv-min-max = <1350>;
+			mv-deadzone = <0>;
+			scale-multiplier = <1>;
+			scale-divisor = <48>;
+			evt-type = <INPUT_EV_REL>;
+			input-code = <INPUT_REL_X>;
+		};
+		y-ch {
+			io-channels = <&adc 7>;
+			mv-mid = <1700>;
+			mv-min-max = <1350>;
+			mv-deadzone = <0>;
+			scale-multiplier = <1>;
+			scale-divisor = <48>;
+			invert;
+			evt-type = <INPUT_EV_REL>;
+			input-code = <INPUT_REL_Y>;
+		};
+	};
 };
 
 
@@ -171,4 +200,11 @@ zephyr_udc0: &usbd {
 			reg = <0x000f4000 0x0000c000>;
 		};
 	};
+};
+
+/ {
+    joystick_listener {
+        compatible = "zmk,input-listener";
+        device = <&anin0>;
+    };
 };

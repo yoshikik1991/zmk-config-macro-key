@@ -30,4 +30,38 @@ config ZMK_USB
 config ZMK_BATTERY_VOLTAGE_DIVIDER
 	default y
 
+#for analog pointing
+config ZMK_POINTING
+    default y
+
+config ADC
+    default y
+
+config ADC_ASYNC
+    default y
+
+config ANALOG_INPUT
+    default y
+
+config ANALOG_INPUT_LOG_DBG_RAW
+    default y
+
+config ANALOG_INPUT_LOG_DBG_REPORT
+    default y
+
+# config CONFIG_ADC
+#     default y
+
+# config CONFIG_ADC_ASYNC
+#     default y
+
+# config CONFIG_ANALOG_INPUT
+#     default y
+
+# config CONFIG_ANALOG_INPUT_LOG_DBG_RAW
+#     default y
+
+# config CONFIG_ANALOG_INPUT_LOG_DBG_REPORT
+#     default y
+
 endif # BOARD_MACRO_KEY

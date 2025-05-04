@@ -1,9 +1,9 @@
-import yaml, json, os, shutil, subprocess, glob
+import yaml, os, shutil, subprocess, glob
 from datetime import datetime, timezone, timedelta
 import argparse
 
 #ENV Variable
-WORKDIR = '/workspaces'
+WORKDIR = '/workspaces/work'
 ZMK_CONFG_PATH = '/workspaces/zmk-config'
 
 def run_shell_command(command):
@@ -71,6 +71,7 @@ def zmk_build(board, shield, buildOption, releaseDir, zmkConfigPath=None):
 
 def main():
     #change current dir
+    mkdir(WORKDIR)
     os.chdir(WORKDIR)
     print(os.getcwd())
 
@@ -80,13 +81,13 @@ def main():
     args = parser.parse_args()
 
     #set build mode
-    init = not os.path.exists('/workspaces/app/')
+    init = not os.path.exists(WORKDIR + '/app')
     update = args.update
 
     #west update
     if init or update:
-        mkdir('/workspaces/app/')
-        shutil.copy(ZMK_CONFG_PATH + '/config/west.yml', '/workspaces/app/')
+        mkdir(WORKDIR + '/app')
+        shutil.copy(ZMK_CONFG_PATH + '/config/west.yml', WORKDIR + '/app')
         if init:
             run_shell_command('west init -l app/')  
         run_shell_command('west update')   

@@ -76,7 +76,7 @@ def main():
 
     #get args
     parser = argparse.ArgumentParser(description="ZMK Build Script")
-    parser.add_argument("--update", action="store_true", help="enable west update")
+    parser.add_argument("--update", action="store_true", help="run west update")
     args = parser.parse_args()
 
     #set build mode
